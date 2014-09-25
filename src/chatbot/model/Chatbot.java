@@ -50,9 +50,9 @@ public class Chatbot
 	
 	
 	/**
-	 * Checks for the input"goodbye" to close the app.
-	 * @param input 
-	 * @return
+	 * Checks for the input "au revoir" to close the app.
+	 * @param input The supplied String value.
+	 * @return Whether or not it is OK to quit.
 	 */
 	public boolean quitChecker(String input)
 	{
