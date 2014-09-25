@@ -49,6 +49,11 @@ public class Chatbot
 	}
 	
 	
+	/**
+	 * Checks for the input"goodbye" to close the app.
+	 * @param input 
+	 * @return
+	 */
 	public boolean quitChecker(String input)
 	{
 		boolean okToQuit = false;
