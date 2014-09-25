@@ -16,6 +16,10 @@ public class Chatbot
 		//this. means talk to the current class
 	}
 	
+	/**
+	 * Gets the name of the Chatbot.
+	 * @return The current name of the chatbot as a String.
+	 */
 	public String getName()
 	{
 		return name;
