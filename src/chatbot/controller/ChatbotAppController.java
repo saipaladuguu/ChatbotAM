@@ -5,7 +5,7 @@ import chatbot.view.ChatbotView;
 /**
  * Application Controller for the Chatbot String manipulation project.  Responsible for controlling the View and Model packages.
  * @author Cody Henrichsen
- * @version 1.2 10/1/14
+ * @version 1.3 10/1/14
  */
 public class ChatbotAppController
 {
@@ -17,7 +17,6 @@ public class ChatbotAppController
 	 * The Chatbot Model instance.
 	 */
 	private Chatbot notSoCleverBot;
-	
 	/**
 	 * The startup message for our chatbot application.
 	 */
@@ -32,7 +31,6 @@ public class ChatbotAppController
 		notSoCleverBot = new Chatbot("Mr. not so clever");
 		startMessage = "Welcome to the " + notSoCleverBot.getName() +" Chatbot, type in your name.";
 	}
-	
 	
 	/**
 	 * Allows other objects access to the notSoCleverbot.
@@ -52,6 +50,7 @@ public class ChatbotAppController
 	
 		while(!notSoCleverBot.quitChecker(message))
 		{
+			message = notSoCleverBot.processText(message);
 			message = appView.displayChatbotConversations(message);
 		}
 		

@@ -2,6 +2,7 @@ package chatbot.model;
 
 import java.util.ArrayList;
 
+
 public class Chatbot
 {
 	private String name;
@@ -10,13 +11,16 @@ public class Chatbot
 	
 	
 	/**
-	 * Creates a Chatbot object with a specified name.  Initializes the total chats to 0.
+	 * Creates a Chatbot object with a specified name.  Initializes the total chats to 0. Creates and fills the memeList.
 	 * @param name The name of the chatbot.
 	 */
 	public Chatbot(String name)
 	{
 		this.name = name;
 		numberOfChats = 0;
+		
+		memeList = new ArrayList<String>();
+		fillTheMemeList();
 		//this. means talk to the current class
 	}
 	
@@ -52,6 +56,64 @@ public class Chatbot
 		numberOfChats++;
 	}
 	
+	/**
+	 * Fills the contents of the memeList with internet memes.
+	 */
+	private void fillTheMemeList()
+	{
+		memeList.add("y u mad bro");
+		memeList.add("doh!");
+		memeList.add("one does not simply");
+		memeList.add("hipster meme");
+		memeList.add("toddler fist");
+		memeList.add("kitties!");
+	}
+	
+	/**
+	 * Processed the supplied text from the user to provide a message from the Chatbot.
+	 * @param userText The user supplied text.
+	 * @return What the Chatbot says because of the supplied input.
+	 */
+	public String processText(String userText)
+	{
+		String processedText = "";
+		incrementChats();
+		
+		if(memeChecker(userText))
+		{
+			processedText = "hey, you found a meme: " + userText;
+			processedText += " isn't that cool.";
+		}
+		else
+		{
+			processedText = "Boring, that wasn't a meme.";
+		}
+		
+		return processedText;
+	}
+	
+	private boolean memeChecker(String currentText)
+	{
+		boolean isAMeme = false;
+		
+		for(String currentMeme : memeList)
+		{
+			if(currentMeme.equalsIgnoreCase(currentText))
+			{
+				isAMeme = true;
+			}
+		}
+		
+		for(int loopCount = 0; loopCount < memeList.size(); loopCount++)
+		{
+			if(memeList.get(loopCount).equalsIgnoreCase(currentText))
+			{
+				isAMeme = true;
+			}
+		}
+		
+		return isAMeme;
+	}
 	
 	/**
 	 * Checks for the input "au revoir" to close the app.
