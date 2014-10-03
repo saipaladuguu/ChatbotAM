@@ -2,13 +2,29 @@ package chatbot.model;
 
 import java.util.ArrayList;
 
-
+/**
+ * Model class for the Chatbot project.  The chatbot has checker methods to direct the output messages for the chatbot.
+ * @author Cody Henrichsen
+ * @version 1.3 10/2/14
+ */
 public class Chatbot
 {
+	/**
+	 * The name of the Chatbot.
+	 */
 	private String name;
+	/**
+	 * The programmer specified content area.  Used in the contentChecker(String input) method.
+	 */
+	private String contentArea;
+	/**
+	 * The current number of chats the Chatbot has participated in.
+	 */
 	private int numberOfChats;
+	/**
+	 * The list of memes that are used in the Chatbot.  Used in the memeChecker(String input).
+	 */
 	private ArrayList<String> memeList;
-	
 	
 	/**
 	 * Creates a Chatbot object with a specified name.  Initializes the total chats to 0. Creates and fills the memeList.
@@ -18,7 +34,7 @@ public class Chatbot
 	{
 		this.name = name;
 		numberOfChats = 0;
-		
+		contentArea = "";
 		memeList = new ArrayList<String>();
 		fillTheMemeList();
 		//this. means talk to the current class
@@ -51,7 +67,10 @@ public class Chatbot
 		this.name = name;
 	}
 	
-	public void incrementChats()
+	/**
+	 * Increments the chat count for the Chatbot.  Used for tracking the activity of the chatbot.
+	 */
+	private void incrementChats()
 	{
 		numberOfChats++;
 	}
@@ -92,6 +111,45 @@ public class Chatbot
 		return processedText;
 	}
 	
+	/**
+	 * Checks the length of a string based on its length.
+	 * @param input The supplied String object.
+	 * @return Whether the supplied String is greater than 20 characters.
+	 */
+	private boolean stringChecker(String input)
+	{
+		boolean isTooLong = false;
+		
+		if(input.length() >= 20)
+		{
+			isTooLong = true;
+		}
+		
+		return isTooLong;
+	}
+	
+	/**
+	 * Checks if the supplied String contains the content area of the Chatbot.
+	 * @param input The user supplied String.
+	 * @return Whether the Chatbot's special content area is inside the input String.
+	 */
+	private boolean contentChecker(String input)
+	{
+		boolean hasMyContent = false;
+		
+		if(input.contains(contentArea))
+		{
+			hasMyContent = true;
+		}
+		
+		return hasMyContent;
+	}
+	
+	/**
+	 * Checks to see if the supplied user text matches any of the memes in the Chatbot's meme list.
+	 * @param currentText The user supplied text.
+	 * @return Whether the String matched any of the built in memes.
+	 */
 	private boolean memeChecker(String currentText)
 	{
 		boolean isAMeme = false;
